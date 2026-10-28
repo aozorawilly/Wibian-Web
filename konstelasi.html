@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0d13" />
+    <meta name="description" content="Konstelasi: peta kecil minat dan proyek Wibian J. (Aozora Willy)." />
+    <title>Konstelasi — Wibian J. (Aozora Willy)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <a class="skip-link" href="#main">Lewati ke konten</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <header class="header">
+        <nav class="nav container" aria-label="Navigasi utama">
+            <a href="index.html#home" class="logo" aria-label="Aozora Willy, beranda">AW<span>/</span>青</a>
+            <div class="nav-links">
+                <a href="index.html#about">Tentang</a>
+                <a href="karya.html">Karya</a>
+                <a href="index.html#contact">Kontak</a>
+                <a href="konstelasi.html" class="is-active" aria-current="page">Konstelasi</a>
+            </div>
+            <a class="nav-cta" href="index.html#contact">Hubungi saya <span aria-hidden="true">↗</span></a>
+        </nav>
+    </header>
+
+    <main id="main" class="const-page">
+        <div class="container">
+            <div class="const-head">
+                <p class="label cyan">星座 / Konstelasi</p>
+                <h1>Peta kecil dari yang kupelajari dan <span>kusukai.</span></h1>
+                <p>Tiap titik adalah satu bidang, proyek, atau minat. Pilih sebuah bintang untuk melihat ceritanya.</p>
+            </div>
+
+            <div class="map" id="map" aria-label="Peta konstelasi minat dan proyek">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" id="lines"></svg>
+            </div>
+            <div class="c-info" id="info" aria-live="polite">
+                <p class="label">Pilih sebuah bintang</p>
+                <h2>Cirra lus avica</h2>
+                <p>Freedom above everything.</p>
+            </div>
+            <div class="c-legend" aria-hidden="true">
+                <span><b style="background:var(--accent)"></b>Membangun</span>
+                <span><b style="background:var(--text)"></b>Mendesain &amp; menjelajah</span>
+                <span><b style="background:var(--purple)"></b>Kreatif</span>
+            </div>
+            <div class="c-list" id="list"></div>
+            <a class="const-link" href="index.html">← Kembali ke beranda</a>
+        </div>
+    </main>
+
+    <script>
+        // Semua isi diambil dari ringkasan yang kamu berikan. Edit/hapus node di sini bila ada yang tidak ingin ditampilkan.
+        const nodes = [
+            { id: 'motto', t: 'Cirra lus avica', g: 'core', x: 50, y: 48, k: 'Motto', d: 'Freedom above everything. Kebebasan untuk menentukan arah, bereksperimen, dan mencoba hal baru.' },
+            { id: 'fe', t: 'Frontend', g: 'build', x: 26, y: 26, k: 'Membangun', d: 'Next.js, React, TypeScript, Tailwind CSS, dan shadcn/ui. Bidang utama yang sedang terus kukembangkan.' },
+            { id: 'data', t: 'Data & backend', g: 'build', x: 11, y: 54, k: 'Membangun', d: 'Supabase, PHP, dan MySQL/MariaDB. Belajar menghubungkan antarmuka dengan database.' },
+            { id: 'uiux', t: 'UI/UX', g: 'design', x: 47, y: 13, k: 'Mendesain', d: 'Figma, layout, tipografi, dan hierarki visual. Desain yang punya tujuan, bukan sekadar dekorasi.' },
+            { id: 'simmas', t: 'SIMMAS', g: 'build', x: 24, y: 80, k: 'Proyek', d: 'Sistem manajemen siswa berbasis web: Next.js, TypeScript, Tailwind CSS, shadcn/ui, dan Supabase.' },
+            { id: 'modesy', t: 'Modesy', g: 'build', x: 41, y: 73, k: 'Proyek', d: 'Latihan membangun antarmuka web modern dengan Next.js dan Tailwind CSS.' },
+            { id: 'wibie', t: 'Wibie Page', g: 'build', x: 62, y: 82, k: 'Proyek', d: 'Proyek personal untuk identitas digital dan eksperimen website.' },
+            { id: 'pkl', t: 'PKL', g: 'build', x: 7, y: 26, k: 'Pengalaman', d: 'Praktik kerja di perusahaan IT di Malang, mengerjakan proyek web yang terhubung dengan sistem dan data.' },
+            { id: 'game', t: 'Game dev', g: 'art', x: 81, y: 30, k: 'Ingin dijelajahi', d: 'Tertarik pada dunia, mekanik, dan loop permainan. Masih arah yang ingin kujelajahi lebih jauh.' },
+            { id: 'fiksi', t: 'Dunia fiksi', g: 'art', x: 90, y: 54, k: 'Minat', d: 'Anime dan fantasi dengan sistem dunia yang konsisten, seperti Tensura, Frieren, dan Genshin Impact.' },
+            { id: 'kosmos', t: 'Kosmos', g: 'art', x: 70, y: 14, k: 'Minat', d: 'Astronomi, skala alam semesta, dan sedikit cosmic horror sebagai konsep kreatif.' },
+            { id: 'art', t: 'Seni digital', g: 'art', x: 76, y: 66, k: 'Minat', d: 'Menggambar dengan IbisPaint, serta tertarik pada fotografi dan editing video.' }
+        ];
+        const links = [['motto','fe'],['motto','uiux'],['motto','game'],['motto','fiksi'],['motto','kosmos'],['motto','art'],['fe','data'],['fe','simmas'],['data','simmas'],['fe','modesy'],['uiux','modesy'],['uiux','wibie'],['fe','pkl'],['data','pkl'],['fiksi','kosmos'],['fiksi','game'],['art','wibie']];
+        const byId = Object.fromEntries(nodes.map(n => [n.id, n]));
+        const map = document.getElementById('map'), svg = document.getElementById('lines'), info = document.getElementById('info');
+        const NS = 'http://www.w3.org/2000/svg';
+        const lineEls = links.map(([a, b], i) => {
+            const l = document.createElementNS(NS, 'line');
+            l.setAttribute('x1', byId[a].x); l.setAttribute('y1', byId[a].y); l.setAttribute('x2', byId[b].x); l.setAttribute('y2', byId[b].y);
+            l.style.animationDelay = (i * 60) + 'ms'; svg.appendChild(l); return { l, a, b };
+        });
+        const stars = nodes.map((n, i) => {
+            const b = document.createElement('button');
+            b.className = 'star' + (n.x > 65 ? ' flip' : '') + (n.g === 'core' ? ' core' : '');
+            b.dataset.g = n.g; b.style.left = n.x + '%'; b.style.top = n.y + '%'; b.style.setProperty('--d', (200 + i * 70) + 'ms');
+            b.innerHTML = '<i></i><span></span>'; b.lastChild.textContent = n.t;
+            b.addEventListener('click', () => select(n.id));
+            map.appendChild(b); return { b, id: n.id };
+        });
+        function select(id) {
+            const n = byId[id];
+            stars.forEach(s => s.b.classList.toggle('on', s.id === id));
+            lineEls.forEach(o => o.l.classList.toggle('on', o.a === id || o.b === id));
+            info.querySelector('.label').textContent = n.k;
+            info.querySelector('h2').textContent = n.t;
+            info.querySelector('p:last-child').textContent = n.d;
+        }
+        // Mobile: daftar sederhana
+        const list = document.getElementById('list');
+        [['Motto', n => n.g === 'core'], ['Membangun', n => n.g === 'build'], ['Mendesain', n => n.g === 'design'], ['Minat', n => n.g === 'art']].forEach(([title, f]) => {
+            const h = document.createElement('h3'); h.textContent = title; list.appendChild(h);
+            nodes.filter(f).forEach(n => {
+                const d = document.createElement('details'), s = document.createElement('summary'), p = document.createElement('p');
+                s.textContent = n.t; p.textContent = n.d; d.append(s, p); list.appendChild(d);
+            });
+        });
+        // Header & progress
+        const header = document.querySelector('.header'), progress = document.querySelector('.scroll-progress');
+        addEventListener('scroll', () => {
+            const max = document.documentElement.scrollHeight - innerHeight;
+            progress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+            header.classList.toggle('is-scrolled', scrollY > 24);
+        }, { passive: true });
+    </script>
+</body>
+</html>
