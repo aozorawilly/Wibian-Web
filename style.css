@@ -404,7 +404,7 @@ a { color: inherit; text-decoration: none; }
 }
 .featured .project-image { aspect-ratio: 16 / 7; }
 .project:hover .project-image {
-    transform: translateY(-8px);
+    transform: translateY(-12px);
     border-color: rgba(143, 166, 255, .4);
     box-shadow: 0 28px 50px -22px rgba(0, 0, 0, .7), 0 0 50px rgba(143, 166, 255, .07);
 }
@@ -1446,7 +1446,7 @@ body:has(dialog[open]) { overflow: hidden; }
     .work-page .work-intro-copy {
         align-self: end;
         margin: 0 0 5vh;
-        transform: translateY(-8px);
+        transform: translateY(-12px);
     }
     .work-page .work-heading { grid-template-columns: 1fr; }
     .work-title, .work-intro-copy { grid-column: 1; }
