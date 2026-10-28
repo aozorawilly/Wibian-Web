@@ -1446,7 +1446,7 @@ body:has(dialog[open]) { overflow: hidden; }
     .work-page .work-intro-copy {
         align-self: end;
         margin: 0 0 5vh;
-        transform: translateY(-3px);
+        transform: translateY(-8px);
     }
     .work-page .work-heading { grid-template-columns: 1fr; }
     .work-title, .work-intro-copy { grid-column: 1; }
