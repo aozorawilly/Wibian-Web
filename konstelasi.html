@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="constellation-page">
     <a class="skip-link" href="#main">Lewati ke konten</a>
     <div class="scroll-progress" aria-hidden="true"></div>
     <header class="header">
@@ -52,6 +52,45 @@
             <a class="const-link" href="index.html">← Kembali ke beranda</a>
         </div>
     </main>
+
+    <nav class="bottom-dock" aria-label="Navigasi mobile">
+        <a href="index.html#home" class="dock-item" aria-label="Beranda">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5z" />
+                <path d="M9 21V12h6v9" />
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="index.html#about" class="dock-item" aria-label="Tentang">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+            </svg>
+            <span>Tentang</span>
+        </a>
+        <a href="karya.html" class="dock-item" aria-label="Karya">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+            </svg>
+            <span>Karya</span>
+        </a>
+        <a href="konstelasi.html" class="dock-item dock-active" aria-current="page" aria-label="Konstelasi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <circle cx="6" cy="6" r="2" />
+                <circle cx="18" cy="5" r="2" />
+                <circle cx="15" cy="18" r="2" />
+                <path d="m8 6 8-.8M7 8l7 8M17 7l-1.5 9" />
+            </svg>
+            <span>Konstelasi</span>
+        </a>
+        <a href="index.html#contact" class="dock-item" aria-label="Kontak">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+            <span>Kontak</span>
+        </a>
+    </nav>
 
     <script>
         // Semua isi diambil dari ringkasan yang kamu berikan. Edit/hapus node di sini bila ada yang tidak ingin ditampilkan.

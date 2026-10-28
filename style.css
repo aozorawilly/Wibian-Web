@@ -643,6 +643,7 @@ footer > span { color: var(--muted); font-size: 12px; letter-spacing: .06em; }
     .eyebrow { gap: 8px; font-size: 9px; letter-spacing: .12em; }
     .hero-intro p { font-size: 14px; }
     .visual-wrap { width: calc(100% - 26px); }
+    .dock-item { font-size: 8px; letter-spacing: .04em; }
     .photo-caption { left: -10px; padding: 11px 13px; }
     .photo-caption small { font-size: 8px; }
     .skills span { padding: 0 10px; font-size: 11px; }
@@ -897,6 +898,8 @@ body:has(dialog[open]) { overflow: hidden; }
 .c-list details p { margin: 10px 0 0; color: var(--muted); line-height: 1.7; font-size: 15px; }
 @media (max-width: 800px) {
     .const-page { padding-top: calc(var(--header-h) + 32px); }
+    body.constellation-page { padding-bottom: 0; }
+    .constellation-page .const-page { padding-bottom: 178px; }
     .map, .c-info, .c-legend { display: none; }
     .c-list { display: block; }
 }
